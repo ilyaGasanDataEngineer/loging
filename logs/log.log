@@ -1,0 +1,91 @@
+2024-07-12T19:50:44.074913+0300 INFO one route
+2024-07-12T19:50:53.256800+0300 INFO one route
+2024-07-12T19:50:54.941263+0300 INFO one route
+2024-07-12T19:50:55.656342+0300 INFO one route
+2024-07-12T19:50:56.190701+0300 INFO one route
+2024-07-12T19:51:06.411641+0300 INFO route second
+2024-07-12T19:51:31.587255+0300 ERROR An error has been caught in function 'dispatch_request', process 'MainProcess' (126232), thread 'Thread-7 (process_request_thread)' (138835230983872):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x7e4519db8cc0>
+    └ <Thread(Thread-7 (process_request_thread), started daemon 138835230983872)>
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x7e4519db89a0>
+    └ <Thread(Thread-7 (process_request_thread), started daemon 138835230983872)>
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-7 (process_request_thread), started daemon 138835230983872)>
+    │    │        │    └ (<socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 5000), raddr=('127.0.0.1', 60602)>, ('127.0.0.1', 60602))
+    │    │        └ <Thread(Thread-7 (process_request_thread), started daemon 138835230983872)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x7e4518c8ad80>>
+    └ <Thread(Thread-7 (process_request_thread), started daemon 138835230983872)>
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 60602)
+    │    │              └ <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 5000), raddr=('127.0.0.1', 60602)>
+    │    └ <function BaseServer.finish_request at 0x7e4519dba980>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x7e4518c8ad80>
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x7e4518c8ad80>
+    │    │                   │        └ ('127.0.0.1', 60602)
+    │    │                   └ <socket.socket fd=5, family=2, type=1, proto=0, laddr=('127.0.0.1', 5000), raddr=('127.0.0.1', 60602)>
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x7e4518c8ad80>
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x7e451924ff60>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x7e4518aa2060>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/werkzeug/serving.py", line 391, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x7e4519bc8a40>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x7e4518aa2060>
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x7e4518aa2060>>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/werkzeug/serving.py", line 363, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'loguru_lesson'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x7e4518c8ad80>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x7e4518aa2060>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x7e4518b011c0>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/werkzeug/serving.py", line 324, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x7e4518b00fe0>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=5>, 'wsgi.errors': <_io.TextIOWrap...
+                       └ <Flask 'loguru_lesson'>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x7e4518b00fe0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=5>, 'wsgi.errors': <_io.TextIOWrap...
+           │    └ <function Flask.wsgi_app at 0x7e4518d0e520>
+           └ <Flask 'loguru_lesson'>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x7e4518d0dc60>
+               └ <Flask 'loguru_lesson'>
+  File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x7e4518d0dbc0>
+         └ <Flask 'loguru_lesson'>
+> File "/media/ilyagasan/disk_B2/projects/loger/.venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'decorator_error'
+           │    │           │    │              └ <Rule '/decorator_error' (OPTIONS, HEAD, GET) -> decorator_error>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x7e4518ac60c0>, 'one': <function one at 0x7e4518ac6340>, 'second': ...
+           │    │           └ <Flask 'loguru_lesson'>
+           │    └ <function Flask.ensure_sync at 0x7e4518d0de40>
+           └ <Flask 'loguru_lesson'>
+
+  File "/media/ilyagasan/disk_B2/projects/loger/loguru_lesson.py", line 32, in decorator_error
+    a = 1 / null_var
+            └ 0
+
+ZeroDivisionError: division by zero
